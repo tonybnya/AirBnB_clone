@@ -8,16 +8,16 @@ It is a testing tool, a sandbox where devs can play around with ideas, to see wh
 
 To start the Console, just type-in the following command and press `ENTER`:
 
-```
+```bash
 ./console.py
 (hbnb)
 ```
 
 Here are some uses cases:
 
-1. Interactive Mode
+1.Interactive Mode
 
-```
+```bash
 $ ./console.py
 (hbnb) help
 
@@ -31,9 +31,9 @@ EOF  help  quit
 $
 ```
 
-2. Non-Interactive Mode
+2.Non-Interactive Mode
 
-```
+```bash
 $ echo "help" | ./console.py
 (hbnb)
 
