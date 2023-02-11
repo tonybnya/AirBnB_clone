@@ -1,13 +1,10 @@
 #!/usr/bin/python3
-# alx_test_base_model.py
+# test_base_model.py
 # Author: @ALX
 """
 This test function has been given by ALX.
-The first lines have been modified due to path changing of the testing folder.
 """
-from .. import models
-
-BaseModel = __import__('models.base_model').BaseModel
+from models.base_model import BaseModel
 
 
 my_model = BaseModel()
