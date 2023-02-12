@@ -9,15 +9,28 @@ import sys
 
 
 class HBNBCommand(cmd.Cmd):
-    """Class definition for the AirBnB Console."""
+    """Class definition for the AirBnB Console.
+
+    Attributes:
+        prompt (str): A custom prompt defined for the Console.
+        __classes (str): String representing different args corresponding to
+        the classed defined.
+    """
 
     # Interactive Mode
     prompt = "(hbnb) "
+    __classes = {
+        "BaseModel",
+        "User",
+        "State",
+        "City",
+        "Place",
+        "Amenity",
+        "Review"
+    }
 
     def do_create(self, args):
-        """Create a new instance of BaseModel, saves it to a JSON file,
-        and prints the id.
-        """
+        """Create a BaseModel object, saves to a JSON file, prints the id."""
         if not args:
             print("** class name missing **")
         else:
