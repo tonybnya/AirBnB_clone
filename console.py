@@ -11,10 +11,6 @@ import sys
 class HBNBCommand(cmd.Cmd):
     """Class definition for the AirBnB Console."""
 
-    # Non-Interactive Mode
-    if not sys.stdin.isatty():
-        print()
-
     # Interactive Mode
     prompt = "(hbnb) "
 
@@ -52,6 +48,10 @@ class HBNBCommand(cmd.Cmd):
     def help_quit(self):
         """Documentation for the quit command."""
         print("Quit command to exit the program\n")
+
+    # Non-Interactive Mode
+    if not sys.stdin.isatty():
+        print('')
 
 
 # This module should not be executed when imported.
