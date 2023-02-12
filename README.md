@@ -2,15 +2,20 @@
 
 This project is to create a Console to access and manipulate data for the AirBnB Clone website.
 
-This console is a single-used function, a Command Line Interface (CLI) from which devs can Create, Read, Update, and Delete (CRUD) objects in file storage.
+This console is a single-used function, a Command Line Interface (CLI) from which devs can Create, Read, Update, and Delete (CRUD) objects in a file storage.
 
 It is a testing tool, a sandbox where devs can play around with ideas, to see what does and doesn't work in the file storage, before building out the rest of the web application.
 
-To start the Console, just type-in the following command and press `ENTER`:
+To start the Console, just type in your shell terminal the following command and press `ENTER`:
 
 ```bash
 ./console.py
-(hbnb)
+```
+
+A prompt will appear in which you can enter some defined commands.
+
+```bash
+(hbnb) 
 ```
 
 Here are some uses cases:
