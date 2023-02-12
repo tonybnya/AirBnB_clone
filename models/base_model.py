@@ -6,7 +6,7 @@ Base class that defines all the common attributes/methods.
 """
 from uuid import uuid4
 from datetime import datetime
-from models.engine.file_storage import storage
+from models import storage
 
 
 class BaseModel:
@@ -30,8 +30,7 @@ class BaseModel:
                 self.updated_at = datetime.strptime(kwargs["updated_at"], form)
         else:
             self.id = str(uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
+            self.created_at = self.updated_at = datetime.now()
             storage.new(self)
 
     def __str__(self):

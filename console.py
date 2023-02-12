@@ -6,6 +6,7 @@ This module implements the entry point of the command line interpreter.
 """
 import cmd
 import sys
+from ast import literal_eval
 from models import storage
 from models.base_model import BaseModel
 
@@ -32,7 +33,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
             else:
                 storage.save()
-                print(eval(class_name[0])().id)
+                print(literal_eval(class_name[0])().id)
 
     def emptyline(self):
         """Do not execute anything on empty arguments."""
