@@ -29,17 +29,17 @@ class HBNBCommand(cmd.Cmd):
         "Review"
     }
 
-    def do_create(self, args):
-        """Create a BaseModel object, saves to a JSON file, prints the id."""
-        if not args:
-            print("** class name missing **")
-        else:
-            class_name = args.strip()
-            if class_name not in HBNBCommand.__classes:
-                print("** class doesn't exist **")
-            else:
-                storage.save()
-                print(eval(class_name[0])().id)
+    # def do_create(self, args):
+    #     """Create a BaseModel object, saves to a JSON file, prints the id."""
+    #     if not args:
+    #         print("** class name missing **")
+    #     else:
+    #         class_name = args.strip()
+    #         if class_name not in HBNBCommand.__classes:
+    #             print("** class doesn't exist **")
+    #         else:
+    #             storage.save()
+    #             print(eval(class_name[0])().id)
 
     def emptyline(self):
         """Do not execute anything on empty arguments."""
