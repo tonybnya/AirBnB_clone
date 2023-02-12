@@ -17,6 +17,7 @@ class TestFileStorage(unittest.TestCase):
     def setUp(self):
         """Set up test fixtures, if any."""
         self.fstorage = FileStorage()
+        FileStorage._FileStorage__objects = {}
 
     def tearDown(self):
         """Tear down test fixtures, if any."""
