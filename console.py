@@ -56,11 +56,11 @@ class HBNBCommand(cmd.Cmd):
 
     def help_EOF(self):
         """Documentation for the EOF signal."""
-        print("Quit the console with the EOF signal\n")
+        print("Quit the console with the EOF signal")
 
     def help_quit(self):
         """Documentation for the quit command."""
-        print("Quit command to exit the program\n")
+        print("Quit command to exit the program")
 
     # Non-Interactive Mode
     if not sys.stdin.isatty():
