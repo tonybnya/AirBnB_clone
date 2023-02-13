@@ -23,7 +23,6 @@ class FileStorage:
     """
     __file_path = "file.json"
     __objects = {}
-    # __objects: dict = {}
 
     def all(self):
         """
@@ -35,8 +34,10 @@ class FileStorage:
         """
         Sets in __objects the obj with key <obj class name>.id.
         """
-        key = obj.__class__.__name__ + "." + obj.id
-        FileStorage.__objects[key] = obj
+        # key = obj.__class__.__name__ + "." + obj.id
+        # FileStorage.__objects[key] = obj
+        key = obj.__class__.__name__
+        FileStorage.__objects["{}.{}".format(key, obj.id)] = obj
 
     def save(self):
         """
