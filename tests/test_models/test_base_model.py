@@ -4,15 +4,13 @@
 """
 This is a test function for the base class model.
 """
-# import unittest
-# from uuid import uuid4
-# from datetime import datetime
-# from models.base_model import BaseModel
 import unittest
 from datetime import datetime
-from uuid import uuid4
-from models import storage
+import models
 from models.base_model import BaseModel
+# from uuid import uuid4
+# from models import storage
+
 # class TestBaseModel(unittest.TestCase):
 #     """Test cases for the BaseModel class."""
 
@@ -98,8 +96,12 @@ class TestBaseModel(unittest.TestCase):
         """Tests the str method of BaseModel."""
         model = BaseModel()
         expected = "[BaseModel] ({}) {{'created_at': {}, 'id': '{}', \
-            'updated_at': {}}}".format(model.id, model.created_at.isoformat(),
-                                       model.id, model.updated_at.isoformat())
+            'updated_at': {}}}".format(
+            model.id,
+            model.created_at.isoformat(),
+            model.id,
+            model.updated_at.isoformat(),
+        )
         self.assertEqual(str(model), expected)
 
     def test_save(self):
@@ -124,5 +126,5 @@ class TestBaseModel(unittest.TestCase):
                          model.updated_at.isoformat())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
