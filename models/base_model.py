@@ -6,9 +6,11 @@ Base class that defines all the common attributes/methods.
 """
 from uuid import uuid4
 from datetime import datetime
-import storage
+import models
+# import storage
 # from models import storage
-# import models
+
+storage = __import__('models.__init__').models.storage
 
 
 class BaseModel:
