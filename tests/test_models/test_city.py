@@ -5,8 +5,9 @@
 Unittest for user.py
 """
 import unittest
-from models.city import City
 import datetime
+from models.base_model import BaseModel
+from models.city import City
 
 
 class TestCity(unittest.TestCase):
@@ -22,7 +23,7 @@ class TestCity(unittest.TestCase):
         """test if city is a subclass of BaseModel"""
         self.assertTrue(self.city, City)
 
-    def testHasAttributes(self):
+    def test_has_attributes(self):
         """verify if attributes exist"""
         self.assertTrue(hasattr(self.city, 'state_id'))
         self.assertTrue(hasattr(self.city, 'name'))

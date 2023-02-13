@@ -5,8 +5,9 @@
 Unittest for review.py
 """
 import unittest
-from models.review import Review
 import datetime
+from models.base_model import BaseModel
+from models.review import Review
 
 
 class TestReview(unittest.TestCase):

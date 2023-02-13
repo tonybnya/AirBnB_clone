@@ -5,8 +5,9 @@
 Unittest for state.py
 """
 import unittest
-from models.state import State
 import datetime
+from models.base_model import BaseModel
+from models.state import State
 
 
 class TestState(unittest.TestCase):

@@ -5,8 +5,9 @@
 Unittest for place.py
 """
 import unittest
-from models.place import Place
 import datetime
+from models.base_model import BaseModel
+from models.place import Place
 
 
 class TestPlace(unittest.TestCase):
