@@ -62,11 +62,11 @@ class HBNBCommand(cmd.Cmd):
         """Documentation for the quit command."""
         print("Quit command to exit the program")
 
+
+# This module should not be executed when imported.
+if __name__ == '__main__':
     # Non-Interactive Mode
     if not sys.stdin.isatty():
         print('')
 
-
-# This module should not be executed when imported.
-if __name__ == '__main__':
     HBNBCommand().cmdloop()
