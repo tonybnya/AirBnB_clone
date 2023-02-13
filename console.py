@@ -107,13 +107,6 @@ class HBNBCommand(cmd.Cmd):
             model = eval(line)()
             model.save()
             print(model.id)
-        # else:
-        #     args = parse(line)
-        #     if args[0] not in HBNBCommand.__classes:
-        #         print("** class doesn't exist **")
-        #     else:
-        #         storage.save()
-        #         print(eval(args[0])().id)
 
     def do_show(self, line):
         """
@@ -138,20 +131,6 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
             else:
                 print(storage.all()[key])
-        # if not line:
-        #     print("** class name missing **")
-        # else:
-        #     args = parse(line)
-        #     if args[0] not in HBNBCommand.__classes:
-        #         print("** class doesn't exist **")
-        #     elif len(args) < 2:
-        #         print("** instance id missing **")
-        #     else:
-        #         instance = storage.all().get("{}.{}".format(args[0], args[1]))
-        #         if instance is None:
-        #             print("** no instance found **")
-        #         else:
-        #             print(instance)
 
     def do_destroy(self, line):
         """
@@ -253,56 +232,6 @@ class HBNBCommand(cmd.Cmd):
             setattr(instance, args[2], args[3])
 
         storage.save()
-
-        # args = parse(line)
-
-        # if len(args) == 0:
-        #     print("** class name missing **")
-        #     return
-
-        # if args[0] not in HBNBCommand.__classes:
-        #     print("** class doesn't exist **")
-        #     return
-
-        # if len(args) == 1:
-        #     print("** instance id missing **")
-        #     return
-
-        # key = "{}.{}".format(args[0], args[1])
-        # if key not in storage.all().keys:
-        #     print("** no instance found **")
-        #     return
-
-        # if len(args) == 2:
-        #     print("** attribute name missing **")
-        #     return
-
-        # if len(args) == 3:
-        #     try:
-        #         type(eval(args[2])) != dict
-        #     except NameError:
-        #         print("** value missing **")
-        #         return
-
-        # if len(args) == 4:
-        #     obj = storage.all()[key]
-        #     if args[2] in obj.__class__.__dict__.keys():
-        #         value_type = type(obj.__class__.__dict__[args[2]])
-        #         obj.__dict__[args[2]] = value_type(args[3])
-        #     else:
-        #         obj.__dict__[args[2]] = args[3]
-        # elif type(eval(args[2])) == dict:
-        #     obj = storage.all()[key]
-        #     for key, value in eval(args[2]).items():
-        #         if (key in obj.__class__.__dict__.keys() and
-        #                 type(obj.__class__.__dict__[key]) in (str, int,
-        #                                                       float)):
-        #             value_type = type(obj.__class__.__dict__[key])
-        #             obj.__dict__[key] = value_type
-        #         else:
-        #             obj.__dict__[key] = value
-
-        # storage.save()
 
 
 # This module should not be executed when imported.
