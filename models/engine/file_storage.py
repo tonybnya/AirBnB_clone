@@ -43,7 +43,7 @@ class FileStorage:
         """Deserializes the JSON file to __objects."""
         try:
             with open(FileStorage.__file_path) as file_obj:
-                contents = json.loads(file_obj.read())
+                contents = json.load(file_obj)
                 for obj in contents.values():
                     class_name = obj['__class__']
                     del obj['__class__']
