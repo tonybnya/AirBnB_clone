@@ -25,12 +25,12 @@ def parse(line):
         if brackets is None:
             return [i.strip(",") for i in split(line)]
 
-        lexer = split(line[:brackets.span()[0]])
+        lexer = split(line[: brackets.span()[0]])
         args = [i.strip(",") for i in lexer]
         args.append(brackets.group())
         return args
 
-    lexer = split(line[:curly_braces.span()[0]])
+    lexer = split(line[: curly_braces.span()[0]])
     args = [i.strip(",") for i in lexer]
     args.append(curly_braces.group())
 
@@ -49,15 +49,44 @@ class HBNBCommand(cmd.Cmd):
 
     # Interactive Mode
     prompt = "(hbnb) "
-    __classes = {
-        "BaseModel",
-        "User",
-        "State",
-        "City",
-        "Place",
-        "Amenity",
-        "Review"
-    }
+    __classes = {"BaseModel", "User", "State", "City", "Place", "Amenity", "Review"}
+
+    def emptyline(self):
+        """
+        Do not execute anything on empty arguments.
+        """
+        pass
+
+    def do_EOF(self, line):
+        """
+        Quit the console on EOF signal.
+
+        Args:
+            line (str): input command.
+        """
+        print("")
+        return True
+
+    def do_quit(self, line):
+        """
+        Quit the console.
+
+        Args:
+            line (str): input command.
+        """
+        return True
+
+    def help_EOF(self):
+        """
+        Documentation for the EOF signal.
+        """
+        print("Quit the console with the EOF signal")
+
+    def help_quit(self):
+        """
+        Documentation for the quit command.
+        """
+        print("Quit command to exit the program")
 
     def do_create(self, line):
         """
@@ -66,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
         Args:
             line (str): input command.
 
-        Usage: create <class_name>
+        Usage: create <class name>
         """
         if not line:
             print("** class name missing **")
@@ -86,7 +115,7 @@ class HBNBCommand(cmd.Cmd):
         Args:
             line (str): input command.
 
-        Usage: show <class_name> <id>
+        Usage: show <class name> <id>
         """
         if not line:
             print("** class name missing **")
@@ -111,7 +140,7 @@ class HBNBCommand(cmd.Cmd):
         Args:
             line (str): input command.
 
-        Usage: destroy <class_name> <id>
+        Usage: destroy <class name> <id>
         """
         if not line:
             print("** class name missing **")
@@ -142,7 +171,7 @@ class HBNBCommand(cmd.Cmd):
         Args:
             line (str): input command.
 
-        Usage: all or all <class_name>
+        Usage: all or all <class name>
         """
         args = parse(line)
 
@@ -158,44 +187,67 @@ class HBNBCommand(cmd.Cmd):
 
             print(list_objects)
 
-    def emptyline(self):
+    def do_update(self, line):
         """
-        Do not execute anything on empty arguments.
-        """
-        pass
-
-    def do_EOF(self, line):
-        """
-        Quit the console on EOF signal.
+        Updates an instance based on the class name and id by adding or
+        updating attribute, and saves the change into JSON file.
 
         Args:
             line (str): input command.
-        """
-        print('')
-        return True
 
-    def do_quit(self, line):
+        Usage: <class name> <id> <attribute name> "<attribute value>"
         """
-        Quit the console.
+        args = parse(line)
 
-        Args:
-            line (str): input command.
-        """
-        return True
+        if len(args) == 0:
+            print("** class name missing **")
+            return
 
-    def help_EOF(self):
-        """
-        Documentation for the EOF signal.
-        """
-        print("Quit the console with the EOF signal")
+        if args[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
+            return
 
-    def help_quit(self):
-        """
-        Documentation for the quit command.
-        """
-        print("Quit command to exit the program")
+        if len(args) == 1:
+            print("** instance id missing **")
+            return
+
+        key = "{}.{}".format(args[0], args[1])
+        if key not in storage.all().keys:
+            print("** no instance found **")
+            return
+
+        if len(args) == 2:
+            print("** attribute name missing **")
+            return
+
+        if len(args) == 3:
+            try:
+                type(eval(args[2])) != dict
+            except NameError:
+                print("** value missing **")
+                return
+
+        if len(args) == 4:
+            obj = storage.all()[key]
+            if args[2] in obj.__class__.__dict__.keys():
+                value_type = type(obj.__class__.__dict__[args[2]])
+                obj.__dict__[args[2]] = value_type(args[3])
+            else:
+                obj.__dict__[args[2]] = args[3]
+        elif type(eval(args[2])) == dict:
+            obj = storage.all()[key]
+            for key, value in eval(args[2]).items():
+                if (key in obj.__class__.__dict__.keys() and
+                        type(obj.__class__.__dict__[key]) in (str, int,
+                                                              float)):
+                    value_type = type(obj.__class__.__dict__[key])
+                    obj.__dict__[key] = value_type
+                else:
+                    obj.__dict__[key] = value
+
+        storage.save()
 
 
 # This module should not be executed when imported.
-if __name__ == '__main__':
+if __name__ == "__main__":
     HBNBCommand().cmdloop()
