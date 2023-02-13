@@ -67,6 +67,7 @@ class HBNBCommand(cmd.Cmd):
 if __name__ == '__main__':
     # Non-Interactive Mode
     if not sys.stdin.isatty():
-        print('')
+        # print('')
+        pass
 
     HBNBCommand().cmdloop()
