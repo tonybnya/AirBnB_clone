@@ -19,15 +19,15 @@ class HBNBCommand(cmd.Cmd):
 
     # Interactive Mode
     prompt = "(hbnb) "
-    __classes = {
-        "BaseModel",
-        "User",
-        "State",
-        "City",
-        "Place",
-        "Amenity",
-        "Review"
-    }
+    # __classes = {
+    #     "BaseModel",
+    #     "User",
+    #     "State",
+    #     "City",
+    #     "Place",
+    #     "Amenity",
+    #     "Review"
+    # }
 
     # def do_create(self, args):
     #     """Create a BaseModel object, saves to a JSON file, prints the id."""
