@@ -1,11 +1,8 @@
 # AirBnB Clone - The Console
 
-
-
-
 ![](/Users/blondeau/Library/Application%20Support/marktext/images/2023-02-13-20-25-28-image.png)
 
-> > > > > > > This project is to create a Console to access and manipulate data for the AirBnB Clone website.
+This project is to create a Console to access and manipulate data for the AirBnB Clone website.
 
 This console is a single-used function, a Command Line Interface (CLI) from which devs can Create, Read, Update, and Delete (CRUD) objects in a file storage.
 
