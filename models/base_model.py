@@ -6,11 +6,8 @@ Base class that defines all the common attributes/methods.
 """
 from uuid import uuid4
 from datetime import datetime
-import models
-# import storage
-# from models import storage
-
-storage = models.storage
+from models import storage
+# import models
 
 
 class BaseModel:
