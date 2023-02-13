@@ -10,10 +10,13 @@ import models
 
 
 class BaseModel:
-    """Base class for all the other classes."""
+    """
+    Base class for all the other classes.
+    """
 
     def __init__(self, *args, **kwargs):
-        """Initialize the base attributes.
+        """
+        Initialize the base attributes.
 
         Attributes:
             *args (tuple): unused, containing all the attributes.
@@ -34,17 +37,23 @@ class BaseModel:
             models.storage.new(self)
 
     def __str__(self):
-        """Returns the string representation of an instance."""
+        """
+        Returns the string representation of an instance.
+        """
         class_name = self.__class__.__name__
         return "[{}] ({}) {}".format(class_name, self.id, self.__dict__)
 
     def save(self):
-        """Update the public instance attribute 'updated_at'."""
+        """
+        Update the public instance attribute 'updated_at'.
+        """
         self.updated_at = datetime.today()
         models.storage.save()
 
     def to_dict(self):
-        """Returns dict containing all keys/values of __dict__ of instance."""
+        """
+        Returns dict containing all keys/values of __dict__ of instance.
+        """
         my_dict = self.__dict__.copy()
         my_dict["__class__"] = self.__class__.__name__
         my_dict["created_at"] = my_dict["created_at"].isoformat()

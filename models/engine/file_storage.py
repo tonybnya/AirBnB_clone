@@ -11,7 +11,8 @@ from models.base_model import BaseModel
 
 
 class FileStorage:
-    """Serialization - Deserialization.
+    """
+    Serialization - Deserialization.
 
     Attributes:
         __file_path (str): private instance attribute representing
@@ -24,16 +25,22 @@ class FileStorage:
     # __objects: dict = {}
 
     def all(self):
-        """Returns the dictionary __objects."""
+        """
+        Returns the dictionary __objects.
+        """
         return FileStorage.__objects
 
     def new(self, obj):
-        """Sets in __objects the obj with key <obj class name>.id."""
+        """
+        Sets in __objects the obj with key <obj class name>.id.
+        """
         key = obj.__class__.__name__ + "." + obj.id
         FileStorage.__objects[key] = obj
 
     def save(self):
-        """Serializes __objects to the JSON file."""
+        """
+        Serializes __objects to the JSON file.
+        """
         with open(FileStorage.__file_path, 'w') as file_obj:
             my_dict = {}
             for key, obj in FileStorage.__objects.items():
@@ -41,7 +48,9 @@ class FileStorage:
             json.dump(my_dict, file_obj)
 
     def reload(self):
-        """Deserializes the JSON file to __objects."""
+        """
+        Deserializes the JSON file to __objects.
+        """
         try:
             with open(FileStorage.__file_path) as file_obj:
                 contents = json.load(file_obj)
