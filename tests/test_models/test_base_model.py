@@ -89,7 +89,7 @@ class TestBaseModel(unittest.TestCase):
         """Tests the initialization of a new instance
         of BaseModel with kwargs.
         """
-        dtime = datetime.now()
+        dtime = datetime.today()
         model = BaseModel(created_at=dtime.isoformat(), random_attr="value")
         self.assertEqual(model.created_at, dtime)
         self.assertEqual(model.random_attr, "value")

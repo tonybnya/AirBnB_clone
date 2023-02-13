@@ -30,7 +30,7 @@ class BaseModel:
                 self.updated_at = datetime.strptime(kwargs["updated_at"], form)
         else:
             self.id = str(uuid4())
-            self.created_at = self.updated_at = datetime.now()
+            self.created_at = self.updated_at = datetime.today()
             storage.new(self)
 
     def __str__(self):
@@ -40,7 +40,7 @@ class BaseModel:
 
     def save(self):
         """Update the public instance attribute 'updated_at'."""
-        self.updated_at = datetime.now()
+        self.updated_at = datetime.today()
         storage.save()
 
     def to_dict(self):
