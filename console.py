@@ -9,6 +9,7 @@ import re
 from shlex import split
 from models import storage
 from models.base_model import BaseModel
+from models.user import User
 
 
 def parse(line):
@@ -49,9 +50,10 @@ class HBNBCommand(cmd.Cmd):
 
     # Interactive Mode
     prompt = "(hbnb) "
-    __classes = {
-        "BaseModel", "User", "State", "City", "Place", "Amenity", "Review"
-    }
+    __classes = {"BaseModel", "User"}
+    # __classes = {
+    #     "BaseModel", "User", "State", "City", "Place", "Amenity", "Review"
+    # }
 
     def emptyline(self):
         """

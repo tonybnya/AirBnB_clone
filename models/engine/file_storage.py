@@ -34,31 +34,44 @@ class FileStorage:
         """
         Sets in __objects the obj with key <obj class name>.id.
         """
-        # key = obj.__class__.__name__ + "." + obj.id
-        # FileStorage.__objects[key] = obj
-        key = obj.__class__.__name__
-        FileStorage.__objects["{}.{}".format(key, obj.id)] = obj
+        key = obj.__class__.__name__ + "." + obj.id
+        FileStorage.__objects[key] = obj
 
     def save(self):
         """
         Serializes __objects to the JSON file.
         """
+        # with open(FileStorage.__file_path, 'w') as file_obj:
+        #     my_dict = {}
+        #     for key, obj in FileStorage.__objects.items():
+        #         my_dict[key] = obj.to_dict()
+        #     json.dump(my_dict, file_obj)
+        dict_objects = {}
+        for key, value in FileStorage.__objects.items():
+            dict_objects[key] = value.to_dict()
+
         with open(FileStorage.__file_path, 'w') as file_obj:
-            my_dict = {}
-            for key, obj in FileStorage.__objects.items():
-                my_dict[key] = obj.to_dict()
-            json.dump(my_dict, file_obj)
+            json.dump(dict_objects, file_obj)
 
     def reload(self):
         """
         Deserializes the JSON file to __objects.
         """
+        # try:
+        #     with open(FileStorage.__file_path) as file_obj:
+        #         contents = json.load(file_obj)
+        #         for obj in contents.values():
+        #             class_name = obj['__class__']
+        #             del obj['__class__']
+        #             self.new(eval(class_name)(**obj))
+        # except FileNotFoundError:
+        #     pass
         try:
             with open(FileStorage.__file_path) as file_obj:
-                contents = json.load(file_obj)
-                for obj in contents.values():
-                    class_name = obj['__class__']
-                    del obj['__class__']
-                    self.new(eval(class_name)(**obj))
+                FileStorage.__objects = json.load(file_obj)
+
+            for key, obj in FileStorage.__objects.items():
+                class_name, class_id = key.split(".")
+                FileStorage.__objects[key] = eval(class_name)(**obj)
         except FileNotFoundError:
             pass
