@@ -14,6 +14,9 @@ from models.base_model import BaseModel
 def parse(line):
     """
     Helper function to parse the arguments for the command line.
+
+    Args:
+        line (str): the input text to be parsed.
     """
     curly_braces = re.search(r"\{(.*?)\}", line)
     brackets = re.search(r"\[(.*?)\]", line)
@@ -60,6 +63,9 @@ class HBNBCommand(cmd.Cmd):
         """
         Create a BaseModel object, saves to a JSON file, prints the id.
 
+        Args:
+            line (str): input command.
+
         Usage: create <class_name>
         """
         if not line:
@@ -76,6 +82,9 @@ class HBNBCommand(cmd.Cmd):
         """
         Prints the string representation of an instance based of the class name
         and id.
+
+        Args:
+            line (str): input command.
 
         Usage: show <class_name> <id>
         """
@@ -98,6 +107,9 @@ class HBNBCommand(cmd.Cmd):
         """
         Deletes an instance based on the class name and id and saves the change
         into the JSON file.
+
+        Args:
+            line (str): input command.
 
         Usage: destroy <class_name> <id>
         """
@@ -122,6 +134,30 @@ class HBNBCommand(cmd.Cmd):
         del storage.all()[key]
         storage.save()
 
+    def all(self, line):
+        """
+        Prints all string representation of all instances based or not on the
+        class name.
+
+        Args:
+            line (str): input command.
+
+        Usage: all or all <class_name>
+        """
+        args = parse(line)
+
+        if len(args) > 0 and args[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
+        else:
+            list_objects = []
+            for obj in storage.all().values():
+                if len(args) > 0 and args[0] == obj.__class__.__name__:
+                    list_objects.append(obj.__str__())
+                elif len(args) == 0:
+                    list_objects.append(obj.__str__())
+
+            print(list_objects)
+
     def emptyline(self):
         """
         Do not execute anything on empty arguments.
@@ -131,6 +167,9 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, line):
         """
         Quit the console on EOF signal.
+
+        Args:
+            line (str): input command.
         """
         print('')
         return True
@@ -138,6 +177,9 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, line):
         """
         Quit the console.
+
+        Args:
+            line (str): input command.
         """
         return True
 
