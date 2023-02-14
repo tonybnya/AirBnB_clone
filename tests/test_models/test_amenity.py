@@ -6,8 +6,9 @@ Unittest for amenity.py
 """
 import unittest
 import datetime
-from models.base_model import BaseModel
+import models
 from models.amenity import Amenity
+from models.base_model import BaseModel
 
 
 class TestAmenity(unittest.TestCase):
