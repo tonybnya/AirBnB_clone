@@ -13,7 +13,9 @@ from models.city import City
 class TestCity(unittest.TestCase):
     """Tests instances and methods from city class"""
 
-    city = City()
+    def setUp(self):
+        """Set up a City instance for all the tests."""
+        self.city = City()
 
     def test_class_exists(self):
         """tests if class exists"""

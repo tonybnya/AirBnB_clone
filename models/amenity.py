@@ -5,6 +5,7 @@
 Definition of the Amenity class.
 This class inherits from the BaseModel class.
 """
+import models
 from models.base_model import BaseModel
 
 

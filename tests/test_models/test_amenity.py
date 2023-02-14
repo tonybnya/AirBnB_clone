@@ -14,7 +14,9 @@ from models.base_model import BaseModel
 class TestAmenity(unittest.TestCase):
     """Tests instances and methods from amenity class"""
 
-    amenity = Amenity()
+    def setUp(self):
+        """Set up a Amenity instance for all the tests."""
+        self.amenity = Amenity()
 
     def test_class_exists(self):
         """tests if class exists"""

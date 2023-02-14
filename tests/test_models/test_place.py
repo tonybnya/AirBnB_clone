@@ -13,7 +13,9 @@ from models.place import Place
 class TestPlace(unittest.TestCase):
     """Tests instances and methods from amenity class"""
 
-    place = Place()
+    def setUp(self):
+        """Set up a Place instance for all the tests."""
+        self.place = Place()
 
     def test_class_exists(self):
         """tests if class exists"""

@@ -13,7 +13,9 @@ from models.state import State
 class TestState(unittest.TestCase):
     """ Tests instances and methods from State class """
 
-    state = State()
+    def setUp(self):
+        """Set up a State instance for all the tests."""
+        self.state = State()
 
     def test_class_exists(self):
         """tests if class exists"""

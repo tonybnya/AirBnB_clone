@@ -13,7 +13,9 @@ from models.review import Review
 class TestReview(unittest.TestCase):
     """Tests instances and methods from Review class"""
 
-    review = Review()
+    def setUp(self):
+        """Set up a Review instance for all the tests."""
+        self.review = Review()
 
     def test_class_exists(self):
         """tests if class exists"""
