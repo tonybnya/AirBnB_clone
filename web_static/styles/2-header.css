@@ -1,16 +1,5 @@
 header { 
-    background-color: white;
+    background-color: #FF0000;
     height: 70px;
     width: 100%;
-    border-bottom: 1px solid #CCCCCC;
-    display: flex;
-    align-items: center;
-}
-
-.logo { 
-    float: left;
-    margin-left: 20px;
-    /* background: red; */
-    /* background: url('./images/logo.png') left center no-repeat; */
-    /* background-size: contain; */
 }
