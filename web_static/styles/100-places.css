@@ -92,26 +92,31 @@
     text-align: justify;
 }
 
-.amenities {
+.places .amenities {
     margin-top: 40px;
     margin-left: 0;
 }
 
-.amenities h2 {
+.places .amenities h2 {
     font-size: 16px !important;
-    border-bottom: none;
-    display: inline-block;
-    padding-bottom: 10px;
-    /* border-bottom: 1px solid #DDDDDD; */
+    display: block;
 }
 
-.amenities ul {
+.places .amenities h2::after {
+    content: "";
+    display: block;
+    width: 390px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.places .amenities ul {
     list-style-type: none; 
     margin: 0;
     padding: 0;
 }
 
-.amenities ul li {
+.places .amenities ul li {
     margin: 0;
     padding: 0;
 }
