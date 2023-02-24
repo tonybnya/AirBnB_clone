@@ -91,3 +91,27 @@
 .description p {
     text-align: justify;
 }
+
+.amenities {
+    margin-top: 40px;
+    margin-left: 0;
+}
+
+.amenities h2 {
+    font-size: 16px !important;
+    border-bottom: none;
+    display: inline-block;
+    padding-bottom: 10px;
+    /* border-bottom: 1px solid #DDDDDD; */
+}
+
+.amenities ul {
+    list-style-type: none; 
+    margin: 0;
+    padding: 0;
+}
+
+.amenities ul li {
+    margin: 0;
+    padding: 0;
+}
